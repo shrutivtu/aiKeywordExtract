@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Textarea } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
+import PropTypes from 'prop-types';
 
 export const TextInput = ({ extractKeywords }) => {
   const [text, setText] = useState("");
@@ -46,4 +47,8 @@ export const TextInput = ({ extractKeywords }) => {
       </Button>
     </>
   );
+};
+
+TextInput.propTypes = {
+  extractKeywords: PropTypes.func.isRequired,
 };

@@ -10,6 +10,8 @@ import {
   ModalCloseButton,
   CircularProgress,
 } from "@chakra-ui/react";
+import PropTypes from 'prop-types';
+
 
 export const KeywordsModal = ({ keywords, loading, isOpen, closeModal }) => {
   return (
@@ -50,4 +52,11 @@ export const KeywordsModal = ({ keywords, loading, isOpen, closeModal }) => {
       </Modal>
     </>
   );
+};
+
+KeywordsModal.propTypes = {
+  keywords: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
