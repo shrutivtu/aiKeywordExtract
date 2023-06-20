@@ -20,14 +20,13 @@ const App = () => {
       body: JSON.stringify({
         model: "text-davinci-003",
         prompt:
-          "Extract keywords from this text. Make the first letter of every word uppercase and separate with commas:\n\n" +
-          text +
+          "Extract the keywords from this text: " + text + "for the following information- Number of bedrooms, Number of bathrooms , Arrival date, Duration of stay , Number of adults , Number of children , Ages of children, Desired rating of accommodation, Preference for showing full price, Maximum price per night , Preferences for amenities - options: pool, TV, internet, desk, microwave, refrigerator, garden. Return an object with key value pair. Enclose all the keys in double quotes as well." +
           "",
-        temperature: 0.5,
-        max_tokens: 60,
-        top_p: 1.0,
-        frequency_penalty: 0.8,
-        presence_penalty: 0.0,
+        temperature: 0.13,
+        max_tokens: 180,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
       }),
     };
 
@@ -37,7 +36,6 @@ const App = () => {
         options
       );
       const json = await response.json();
-      console.log(json.choices[0].text.trim());
       setKeywords(json.choices[0].text.trim());
       setLoading(false);
     } catch (error) {
@@ -50,10 +48,20 @@ const App = () => {
   };
 
   return (
-    <Box bg="blue.600" color="white" paddingTop={130}>
-      <Container maxW="3xl" centerContent>
+    <Box 
+      bg="blue.600" 
+      color="white" 
+      paddingTop={130} 
+    >
+      <Container 
+        maxW="3xl" 
+        centerContent 
+        minHeight="100vh"
+      >
         <Header />
-        <TextInput extractKeywords={extractKeywords} />
+        <TextInput 
+          extractKeywords={extractKeywords} 
+        />
         <Footer />
       </Container>
       <KeywordsModal
