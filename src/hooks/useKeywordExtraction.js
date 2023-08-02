@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TRAVEL_QUERY } from "../query";
 
 const useKeywordExtraction = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +17,7 @@ const useKeywordExtraction = () => {
       },
       body: JSON.stringify({
         model: "text-davinci-003",
-        prompt:
-          "Extract the keywords from this text: " +
-          text +
-          "",
+        prompt: TRAVEL_QUERY + `Here is the query ${text}`,
         temperature: 0.13,
         max_tokens: 180,
         top_p: 1,
